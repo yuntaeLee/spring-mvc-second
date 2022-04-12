@@ -7,26 +7,32 @@
 <body>
     <!-- 자바스크립트 인라인 사용 전 -->
     <script>
-     var username = "[[${user.username}]]";
-     var age = [[${user.age}]];
+         var username = "[[${user.username}]]";
+         var age = [[${user.age}]];
 
-     // javascript nature template
-     var username2 = /*[[${user.username}]]*/ "test username";
+         // javascript nature template
+         var username2 = /*[[${user.username}]]*/ "test username";
 
-     // 객체 toString()
-     var user = [[${user}]];
+         // 객체 toString()
+         var user = [[${user}]];
     </script>
 
     <!-- 자바스크립트 인라인 사용 후 -->
     <script th:inline="javascript">
-     var username = [[${user.username}]];
-     var age = [[${user.age}]];
+         var username = [[${user.username}]];
+         var age = [[${user.age}]];
 
-     // javascript nature template
-     var username2 = /*[[${user.username}]]*/ "test username";
+         // javascript nature template
+         var username2 = /*[[${user.username}]]*/ "test username";
 
-     // 객체 json
-     var user = [[${user}]];
+         // 객체 json
+         var user = [[${user}]];
+    </script>
+
+    <script th:inline="javascript">
+        [# th:each="user, stat : ${users}"]
+        var user[[${stat.count}]] = [[${user}]];
+        [/]
     </script>
 </body>
 </html>
